@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaction</title>
+    <script src="p5.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -2;
+    }
+
+    h2 {
+        color: white;
+    }
+</style>
+
+<body>
+    <h2></h2>
+</body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search)
+    const isEs = urlParams.get('es')
+
+    var h2 = document.querySelector('h2')
+    h2.innerText = isEs? "próximamente" : "coming soon"
+</script>
+<script src="waves/index.js"></script>
+
+</html>
