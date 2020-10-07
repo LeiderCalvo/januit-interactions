@@ -27,3 +27,9 @@ canvas {
     z-index: -2;
 }
 
+@media (max-width: 768px) {
+    section .row .text-center {
+        order: 3;
+        margin-top: 2em;
+    }
+}
