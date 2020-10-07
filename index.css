@@ -1,0 +1,29 @@
+@font-face {
+    font-family: metropolis;
+    src: url(./fonts/Metropolis-Regular.otf);
+}
+
+* {
+    font-family: metropolis;
+}
+
+body {
+    background-color: #282c30;
+    color: white;
+}
+
+#c_brush, #c_waves {
+    position: relative;
+    min-height: 100vh;
+}
+
+canvas {
+    width: 100% !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -2;
+}
+

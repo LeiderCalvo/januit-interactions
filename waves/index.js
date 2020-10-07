@@ -1,52 +1,56 @@
-let noiseMax = 1;
-let zoff = 0;
+new p5(app => {
 
-let ca, cb;
-let ox, oy;
-let MAX;
+    let noiseMax = 1;
+    let zoff = 0;
 
-function setup() {
-    createCanvas(windowWidth, windowHeight);
-    angleMode(DEGREES);
+    let ca, cb;
+    let ox, oy;
+    let MAX;
 
-    ca = color("#F903FAAA");
-    cb = color("#0CCBCFAA");
+    app.setup = () => {
+        let canvas = app.createCanvas(app.windowWidth, app.windowHeight);
+        canvas.parent('c_waves');
+        app.angleMode(app.DEGREES);
 
-    ox = width / 2;
-    oy = height;
+        ca = app.color("#F903FAAA");
+        cb = app.color("#0CCBCFAA");
 
-    MAX = width > height ? width : height;
+        ox = app.width / 2;
+        oy = app.height;
 
-    noFill();
-    background("#282C30");
-}
+        MAX = app.width > app.height ? app.width : app.height;
 
-function draw() {
-    frameCount % 5 === 0 && background("#282C3022");
-    stroke(lerpColor(ca, cb, abs(sin(zoff * 100))));
-    push();
-    translate(ox, oy);
-    beginShape();
-    for (let t = 0; t < 360; t++) {
-        let xoff = map(cos(t), -1, 1, 0, noiseMax);
-        let yoff = map(sin(t), -1, 1, 0, noiseMax);
-
-        let n = noise(xoff, yoff, zoff);
-
-        let r = map(n, 0, 1, 0, height * 1.5);
-        let x = r * cos(t);
-        let y = r * sin(t);
-
-        //let c = lerpColor(ca, cb, n);
-
-        vertex(x, y);
+        app.noFill();
+        app.background("#282C30");
     }
-    endShape(CLOSE);
 
-    zoff += 0.005;
-}
+    app.draw = () => {
+        app.frameCount % 5 === 0 && app.background("#282C3022");
+        app.stroke(app.lerpColor(ca, cb, app.abs(app.sin(zoff * 100))));
+        app.push();
+        app.translate(ox, oy);
+        app.beginShape();
+        for (let t = 0; t < 360; t++) {
+            let xoff = app.map(app.cos(t), -1, 1, 0, noiseMax);
+            let yoff = app.map(app.sin(t), -1, 1, 0, noiseMax);
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight)
-    background("#282C30");
-}
+            let n = app.noise(xoff, yoff, zoff);
+
+            let r = app.map(n, 0, 1, 0, app.height * 1.5);
+            let x = r * app.cos(t);
+            let y = r * app.sin(t);
+
+            //let c = lerpColor(ca, cb, n);
+
+            app.vertex(x, y);
+        }
+        app.endShape(app.CLOSE);
+
+        zoff += 0.005;
+    }
+
+    app.windowResized = () => {
+        app.resizeCanvas(app.windowWidth, app.windowHeight)
+        app.background("#282C30");
+    }
+})
