@@ -12,7 +12,8 @@ body {
     color: white;
 }
 
-#c_brush, #c_waves {
+#c_brush,
+#c_waves {
     position: relative;
     min-height: 100vh;
 }
@@ -25,6 +26,16 @@ canvas {
     left: 0;
     bottom: 0;
     z-index: -2;
+}
+
+.blink_me {
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }
 
 @media (max-width: 768px) {
